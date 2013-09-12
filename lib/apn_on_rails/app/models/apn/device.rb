@@ -8,7 +8,9 @@
 # 
 # Example:
 #   Device.create(:token => '5gxadhy6 6zmtxfl6 5zpbcxmw ez3w7ksf qscpr55t trknkzap 7yyt45sc g6jrw7qz')
-class APN::Device < APN::Base
+class APN::Device < ActiveRecord::Base
+  self.table_name = 'apn_devices'
+  attr_accessible :token, :last_registered_at
 
   has_many :notifications, :class_name => 'APN::Notification'
 
